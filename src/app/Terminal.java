@@ -11,7 +11,7 @@ public class Terminal {
     private final ArrayList<Omnibus> guaguas;
     private final ArrayList<Pasajero> pasajeros;
 
-    public Terminal(String nombre, String direccion, ArrayList<Omnibus> guaguas, ArrayList<Pasajero> pasajeros, ArrayList<ListaEspera> LE, ArrayList<ListaOficial> LO) {
+    public Terminal(String nombre, String direccion, ArrayList<Omnibus> guaguas, ArrayList<Pasajero> pasajeros) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.guaguas = guaguas;
@@ -20,6 +20,26 @@ public class Terminal {
 
     public ArrayList<Omnibus> getGuaguas() {
         return guaguas;
+    }
+
+    public ArrayList<ListaOficial> getListaOficial(){
+        ArrayList<ListaOficial> lista=new ArrayList<>();
+        for (Pasajero pasajero : pasajeros) {
+            if (pasajero instanceof ListaOficial) {
+                lista.add((ListaOficial) pasajero);
+            }
+        }
+        return lista;
+    }
+
+    public ArrayList<ListaEspera> getListaEspera(){
+        ArrayList<ListaEspera> lista=new ArrayList<>();
+        for (Pasajero pasajero : pasajeros) {
+            if (pasajero instanceof ListaEspera) {
+                lista.add((ListaEspera) pasajero);
+            }
+        }
+        return lista;
     }
 
     public void agnadirOmnibus(Omnibus obj){

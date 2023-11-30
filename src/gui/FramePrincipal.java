@@ -4,17 +4,32 @@
  */
 package gui;
 
+import app.*;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author A-GORE
  */
 public class FramePrincipal extends javax.swing.JFrame {
+    
+    Terminal terminal;
+    ArrayList<Pasajero> pasajeros;
+    ArrayList<Omnibus> omnibus;
 
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
+        pasajeros=new ArrayList<>();
+        omnibus=new ArrayList<>();
+        terminal=new Terminal("La Rosalia", "Ciego de Avila", omnibus, pasajeros);
         initComponents();
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
     }
 
     /**
@@ -28,7 +43,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaOmnibus = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -37,7 +52,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Terminal de Omnibus");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaOmnibus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -48,7 +63,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaOmnibus);
 
         jMenu1.setText("Opciones");
         jMenuBar1.add(jMenu1);
@@ -121,6 +136,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaOmnibus;
     // End of variables declaration//GEN-END:variables
 }

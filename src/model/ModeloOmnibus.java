@@ -13,11 +13,11 @@ import java.util.ArrayList;
  *
  * @author A-GORE
  */
-public class modeloOmnibus extends AbstractTableModel{
+public class ModeloOmnibus extends AbstractTableModel{
     ArrayList<Omnibus> omnibus;
     String[] columns={"ID", "Chapa", "Destino", "Chofer", "Cantidad Km"};
 
-    public modeloOmnibus(ArrayList<Omnibus> omnibus) {
+    public ModeloOmnibus(ArrayList<Omnibus> omnibus) {
         this.omnibus=omnibus;
     }
 

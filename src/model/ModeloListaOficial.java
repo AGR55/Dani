@@ -1,21 +1,21 @@
 package model;
 
-import app.ListaEspera;
+import app.ListaOficial;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-public class modeloListaEspera extends AbstractTableModel {
-    private ArrayList<ListaEspera> lista;
-    private String[] columns={"ID", "Destinos"};
+public class ModeloListaOficial extends AbstractTableModel {
+    private ArrayList<ListaOficial> lista;
+    private String[] columns={"ID", "Dia de Salida", "Destinos"};
 
-    public modeloListaEspera(ArrayList<ListaEspera> lista) {
+    public ModeloListaOficial(ArrayList<ListaOficial> lista) {
         this.lista=lista;
     }
 
     @Override
     public int getRowCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -25,11 +25,12 @@ public class modeloListaEspera extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        ListaEspera lis=lista.get(rowIndex);
+        ListaOficial lis=lista.get(rowIndex);
 
         return switch (columnIndex) {
             case 0 -> lis.getID();
-            case 1 -> lis.getDestinos();
+            case 1 -> lis.getDia_salida();
+            case 2 -> lis.getDestino();
             default -> null;
         };
     }
@@ -37,4 +38,5 @@ public class modeloListaEspera extends AbstractTableModel {
     public String getColumnName(int column){
         return columns[column];
     }
+
 }
