@@ -12,21 +12,26 @@ public class Turismo extends Omnibus{
         this.cantAsientos_disp = cantAsientos_disp;
     }
 
+    @Override
     public double Precio(){
-        double precio = 0;
+
         if (cantKm<100){
-            return precio = 10;
+            return 10;
         }
-        else if (cantKm>100 && cantKm<200){
-            return precio = 20;
+        else if (cantKm>=100 && cantKm<200){
+            return 20;
         }
         else{
-            return precio = 30;
+            return 30;
         }
     }
 
     public int getCantAsientos_disp(){
         return cantAsientos_disp;
+    }
+
+    public String getHorallegada_terminal() {
+        return horallegada_terminal;
     }
 
     public void setCantAsientos_disp(){

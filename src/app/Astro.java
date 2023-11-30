@@ -15,12 +15,21 @@ public class Astro extends Omnibus{
         this.cant_asientos = cant_asientos;
     }
 
+    @Override
     public double Precio(){
         return cantKm*4;
     }
 
     public Date getDia_salida(){
         return dia_salida;
+    }
+
+    public String getHora_salida() {
+        return hora_salida;
+    }
+
+    public int getCant_asientos() {
+        return cant_asientos;
     }
 
     public int cantAsientos_disp(){

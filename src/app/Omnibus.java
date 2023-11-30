@@ -26,6 +26,18 @@ public abstract class Omnibus {
         return destino;
     }
 
+    public String getChapa() {
+        return chapa;
+    }
+
+    public String getChofer() {
+        return chofer;
+    }
+
+    public double getCantKm() {
+        return cantKm;
+    }
+
     public ArrayList<Pasajero> getPasajeros(){
         return pasajeros;
     }

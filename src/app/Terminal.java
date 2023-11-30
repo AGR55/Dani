@@ -17,6 +17,11 @@ public class Terminal {
         this.guaguas = guaguas;
         this.pasajeros = pasajeros;
     }
+
+    public ArrayList<Omnibus> getGuaguas() {
+        return guaguas;
+    }
+
     public void agnadirOmnibus(Omnibus obj){
         guaguas.add(obj);
     }
@@ -25,7 +30,7 @@ public class Terminal {
         pasajeros.add(p);
     }
 
-    public Omnibus getOmnibus(int pos){
+    public Omnibus Omnibus(int pos){
         return guaguas.get(pos);
     }
 
