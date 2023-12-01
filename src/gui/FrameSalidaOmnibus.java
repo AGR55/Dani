@@ -11,6 +11,7 @@ import javax.swing.SpinnerDateModel;
  * @author A-GORE
  */
 public class FrameSalidaOmnibus extends javax.swing.JFrame {
+    
 
     /**
      * Ejercicio 1
