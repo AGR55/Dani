@@ -4,19 +4,26 @@
  */
 package gui;
 
+import app.Omnibus;
+import java.util.ArrayList;
 import javax.swing.SpinnerDateModel;
+import model.ModeloOmnibus;
 
 /**
  *
  * @author A-GORE
  */
 public class FrameSalidaOmnibus extends javax.swing.JFrame {
+    ModeloOmnibus modelo;
+    ArrayList<Omnibus> omnibus;
     
 
     /**
      * Ejercicio 1
      */
-    public FrameSalidaOmnibus() {
+    public FrameSalidaOmnibus(ArrayList<Omnibus> omnibus) {
+        this.omnibus=omnibus;
+        modelo=new ModeloOmnibus(this.omnibus);
         initComponents();
     }
 
@@ -43,20 +50,15 @@ public class FrameSalidaOmnibus extends javax.swing.JFrame {
 
         jLabel2.setText("Dia");
 
-        tablaOmnibus.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        tablaOmnibus.setModel(modelo);
         jScrollPane1.setViewportView(tablaOmnibus);
 
         boton.setText("Mostrar");
+        boton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,40 +102,13 @@ public class FrameSalidaOmnibus extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameSalidaOmnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameSalidaOmnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameSalidaOmnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameSalidaOmnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameSalidaOmnibus().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton;

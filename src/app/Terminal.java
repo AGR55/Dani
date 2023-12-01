@@ -154,10 +154,10 @@ public class Terminal {
         }
     }
     //F7:Buscar en cual omnibus se fue determinado pasajero
-    public Omnibus buscarPasajero(Pasajero p){
+    public Omnibus buscarPasajero(String ID){
         for(Omnibus guagua : guaguas){
             for(int j = 0; j < guagua.getPasajeros().size(); j++){
-                if(guagua.getPasajeros().get(j) == p){
+                if(guagua.getPasajeros().get(j).getID().equals(ID)){
                     return guagua;
                 }
             }
