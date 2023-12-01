@@ -1,5 +1,6 @@
 package model;
 
+import app.ListaEspera;
 import app.ListaOficial;
 
 import javax.swing.table.AbstractTableModel;
@@ -15,12 +16,12 @@ public class ModeloListaOficial extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return 3;
+        return lista.size();
     }
 
     @Override
     public int getColumnCount() {
-        return lista.size();
+        return 3;
     }
 
     @Override
@@ -37,6 +38,12 @@ public class ModeloListaOficial extends AbstractTableModel {
 
     public String getColumnName(int column){
         return columns[column];
+    }
+
+    public void agregarPasajeros(ArrayList<ListaOficial> lis){
+        lista.clear();
+        lista=lis;
+        this.fireTableDataChanged();
     }
 
 }

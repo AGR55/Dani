@@ -12,15 +12,15 @@ import javax.swing.DefaultListModel;
  * @author A-GORE
  */
 public class FramePasajerosOmnibus extends javax.swing.JFrame {
-    private DefaultListModel modelo=new DefaultListModel();
+       private DefaultListModel modelo=new DefaultListModel();
 
     /**
      * Ejercicio 5
      */
     public FramePasajerosOmnibus(Terminal terminal) {
         modelo.clear();
-        listaPasajeros.setModel(modelo);
         modelo.addAll(terminal.Pasajeros_omnibus());
+        listaPasajeros.setModel(modelo);
         initComponents();
     }
 
@@ -37,7 +37,8 @@ public class FramePasajerosOmnibus extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaPasajeros = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Terminal de Omnibus");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Pasajeros por omnibus");

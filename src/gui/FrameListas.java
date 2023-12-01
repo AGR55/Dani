@@ -6,10 +6,12 @@ package gui;
 
 import app.ListaEspera;
 import app.ListaOficial;
+import app.Pasajero;
 import model.ModeloListaEspera;
 import model.ModeloListaOficial;
 
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.SpinnerDateModel;
 
 /**
@@ -23,12 +25,14 @@ public class FrameListas extends javax.swing.JFrame {
     private ArrayList<ListaEspera> listaE;
     private ModeloListaEspera modeloLE;
     private ModeloListaOficial modeloLO;
+    private ArrayList<Pasajero> pasajeros;
 
     /**
      * Creates new form FrameListas
      */
-    public FrameListas() {
+    public FrameListas(ArrayList<Pasajero> pasajeros) {
         frame=new FramePrincipal();
+        this.pasajeros=pasajeros;
         listaO=frame.getTerminal().getListaOficial();
         listaE=frame.getTerminal().getListaEspera();
         modeloLO=new ModeloListaOficial(listaO);
@@ -64,7 +68,8 @@ public class FrameListas extends javax.swing.JFrame {
         destino3 = new javax.swing.JComboBox<>();
         botonAgregar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Terminal de Omnibus");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Espera");
@@ -103,6 +108,11 @@ public class FrameListas extends javax.swing.JFrame {
         destino3.setEnabled(false);
 
         botonAgregar.setText("Agregar");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,6 +226,42 @@ public class FrameListas extends javax.swing.JFrame {
             destino2.setEnabled(false);
         }
     }//GEN-LAST:event_botonActionPerformed
+
+    private ArrayList<ListaEspera> LE(){
+        ArrayList<ListaEspera> LE=new ArrayList<>();
+        
+        for (int i = 0; i < pasajeros.size(); i++) {
+            if(pasajeros.get(i) instanceof ListaEspera a){
+                LE.add(a);
+            }
+        }
+        return LE;
+    }
+    
+    private ArrayList<ListaOficial> LO(){
+        ArrayList<ListaOficial> LO=new ArrayList<>();
+        
+        for (int i = 0; i < pasajeros.size(); i++) {
+            if(pasajeros.get(i) instanceof ListaOficial a){
+                LO.add(a);
+            }
+        }
+        return LO;
+    }
+    
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        // TODO add your handling code here:
+        if(!id.getText().isBlank()){
+            String cid=id.getText();
+            if(boton.isSelected()){
+                pasajeros.add(new ListaEspera(cid, new String[]{(String)destino1.getSelectedItem(), (String)destino2.getSelectedItem(), (String)destino3.getSelectedItem()}));
+                modeloLE.agregarPasajeros(LE());
+            }else{
+                pasajeros.add(new ListaOficial(cid, (Date)diaSalida.getValue(), (String)destino1.getSelectedItem()));
+                modeloLO.agregarPasajeros(LO());
+            }
+        }
+    }//GEN-LAST:event_botonAgregarActionPerformed
 
     /**
      * @param args the command line arguments

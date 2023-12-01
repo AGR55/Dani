@@ -8,6 +8,8 @@ import app.*;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+import generate.Generadora;
 import model.ModeloOmnibus;
 
 /**
@@ -17,18 +19,20 @@ import model.ModeloOmnibus;
 public class FramePrincipal extends javax.swing.JFrame {
     
     Terminal terminal;
+    Generadora gen=new Generadora();
     ArrayList<Pasajero> pasajeros;
-    ArrayList<Omnibus> omnibus;
-    ModeloOmnibus modelo;
+    ArrayList<Omnibus> omnibus=gen.getOmnibus();
+    ModeloOmnibus modelo=new ModeloOmnibus(this.omnibus);
+
 
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
-        pasajeros=new ArrayList<>();
-        omnibus=new ArrayList<>();
-        modelo=new ModeloOmnibus(omnibus);
+        pasajeros=gen.getPasajeros();
+        
         terminal=new Terminal("La Rosalia", "Ciego de Avila", omnibus, pasajeros);
+        
         initComponents();
     }
 
@@ -203,7 +207,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        FrameListas frame=new FrameListas();
+        FrameListas frame=new FrameListas(pasajeros);
         frame.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -269,10 +273,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FramePrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FramePrincipal().setVisible(true);
         });
     }
 

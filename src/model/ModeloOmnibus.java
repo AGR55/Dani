@@ -23,12 +23,12 @@ public class ModeloOmnibus extends AbstractTableModel{
 
     @Override
     public int getRowCount() {
-        return 5;
+        return omnibus.size();
     }
 
     @Override
     public int getColumnCount() {
-        return omnibus.size();
+        return 5;
     }
 
     @Override
@@ -45,6 +45,7 @@ public class ModeloOmnibus extends AbstractTableModel{
         };
     }
 
+    @Override
     public String getColumnName(int column){
         return columns[column];
     }

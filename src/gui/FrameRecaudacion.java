@@ -36,7 +36,8 @@ public class FrameRecaudacion extends javax.swing.JFrame {
         dia = new javax.swing.JSpinner(new SpinnerDateModel());
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Terminal de Omnibus");
 
         jLabel1.setText("Dia");
 

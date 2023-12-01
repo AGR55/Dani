@@ -42,7 +42,8 @@ public class FrameInfoOmnibus extends javax.swing.JFrame {
         boton = new javax.swing.JButton();
         destino = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Terminal de Omnibus");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Informacion de omnibus por destino");
